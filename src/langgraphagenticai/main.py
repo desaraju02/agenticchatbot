@@ -30,7 +30,7 @@ def load_langgraph_agenticai_ui():
                 return
             usecase = user_input.get("selected_use_case")
             print(f"Selected use case: {usecase}")
-            if usecase == "Basic Chatbot":
+            if usecase == "Basic Chatbot" or "Chatbot with Web":
 
                 print("Building graph for Basic Chatbot...")
 

@@ -27,3 +27,18 @@ class DisplayResult:
                         st.write(user_message)
                     with st.chat_message("assistant"):
                         st.write(value['message'].content)
+        elif usecase == "Chatbot with Web":
+            initial_state = {"message": [user_message]}
+            res = graph.invoke(initial_state)
+            for msg in res['message']:
+                if type(msg) == HumanMessage:
+                    with st.chat_message("user"):
+                        st.write(msg.content)
+                elif type(msg) == ToolMessage:
+                    with st.chat_message("ai"):
+                        st.write("Tool call Started")
+                        st.write(msg.content)
+                        st.write("Tool call Ended")
+                elif type(msg) == AIMessage and msg.content:
+                    with st.chat_message("assistant"):
+                        st.write(msg.content)
